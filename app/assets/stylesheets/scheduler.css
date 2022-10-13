@@ -1,0 +1,39 @@
+ html, body {
+     margin: 0;
+     padding: 0;
+ }
+/* the background color for the whole container and its border*/
+.my_event {
+    background-color: #adbce6;
+    border: 1px solid #778899;
+    overflow: hidden;
+}
+/* disabling the default color for the select menu */
+.dhx_cal_select_menu.my_event div {
+    border: 0;
+    background-color: transparent;
+    color: black;
+}
+/* styles for the events content */
+.dhx_cal_event.my_event .my_event_body {
+    padding-top: 3px;
+    padding-left: 5px;
+}
+/* events's date information */
+.my_event .event_date {
+    font-weight: bold;
+    padding-right: 5px;
+}
+/* events's resizing section */
+.my_event_resize {
+    height: 3px;
+    position: absolute;
+    bottom: -1px;
+}
+/* events's move section */
+.my_event_move {
+    position: absolute;
+    top: 0;
+    height: 10px;
+    cursor: pointer;
+}

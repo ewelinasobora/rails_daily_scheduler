@@ -1,0 +1,25 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/events":
+    get:
+      summary: list events
+      tags:
+      - Events
+      security:
+      - bearer: []
+      responses:
+        '200':
+          description: successful
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
+    schemes:
+      - "https"
+      - "http"
+  
