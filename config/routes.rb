@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   post "data/(:id)", :to => "event#add"
   put "data/:id", :to => "event#update"
   delete "data/:id", :to => "event#delete"
+
+  resources :events
+  post "events/:id/toggle", to: "events#toggle"
 end
