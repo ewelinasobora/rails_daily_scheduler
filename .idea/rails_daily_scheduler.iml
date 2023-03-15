@@ -62,6 +62,7 @@
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.11.5, RVM: ruby-3.0.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jsbundling-rails (v1.0.3, RVM: ruby-3.0.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v2.6.3, RVM: ruby-3.0.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="json-schema (v3.0.0, RVM: ruby-3.0.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.19.0, RVM: ruby-3.0.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.7.1, RVM: ruby-3.0.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="marcel (v1.0.2, RVM: ruby-3.0.4) [gem]" level="application" />
@@ -101,6 +102,9 @@
     <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.11.1, RVM: ruby-3.0.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-rails (v5.1.2, RVM: ruby-3.0.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.11.0, RVM: ruby-3.0.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rswag-api (v2.8.0, RVM: ruby-3.0.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rswag-specs (v2.8.0, RVM: ruby-3.0.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rswag-ui (v2.8.0, RVM: ruby-3.0.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.43.0, RVM: ruby-3.0.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.24.1, RVM: ruby-3.0.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.11.0, RVM: ruby-3.0.4) [gem]" level="application" />
