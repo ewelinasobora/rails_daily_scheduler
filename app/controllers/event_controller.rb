@@ -1,5 +1,4 @@
 class EventController < ApplicationController
-  protect_from_forgery
 
   def get
     events = Event.all
@@ -13,10 +12,11 @@ class EventController < ApplicationController
   end
 
   def add
-    event = Event.create(
+    event = Event.create!(
       text: params["text"],
       start_date: params["start_date"],
-      end_date: params["end_date"]
+      end_date: params["end_date"],
+      user: current_user
     )
 
     render :json=>{:action => "inserted", :tid => event.id}
@@ -27,7 +27,7 @@ class EventController < ApplicationController
     event.text = params["text"]
     event.start_date = params["start_date"]
     event.end_date = params["end_date"]
-    event.save
+    event.save!
 
     render :json=>{:action => "updated"}
   end

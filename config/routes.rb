@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root :to => 'home#index'
   get "data", :to=>"event#get", :as=>"data"
   post "data/(:id)", :to => "event#add"

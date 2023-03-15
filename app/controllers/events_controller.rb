@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  
   def index
     @events = Event.where(status: params[:status].presence || "incomplete")
   end
