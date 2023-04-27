@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
 
-  def index
-  end
+  def index; end
 
   def data
     events = Event.all
@@ -43,7 +42,7 @@ class HomeController < ApplicationController
         Event.where(event_pid: id).destroy_all
       end
 
-      if event_pid != 0 and event_pid != ''
+      if event_pid != 0 && event_pid != ''
         event = Event.find(id)
         event.rec_type = 'none'
         event.save
