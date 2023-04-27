@@ -37,3 +37,4 @@ yarn.lock
 
 /node_modules
 .idea
+coverage/
