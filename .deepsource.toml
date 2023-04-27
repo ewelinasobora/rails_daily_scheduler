@@ -1,0 +1,18 @@
+version = 1
+
+test_patterns = [
+  "spec/**",
+  "*_spec.rb"
+]
+
+exclude_patterns = [
+  "vendor/**",
+  "**/examples/**"
+]
+
+[[analyzers]]
+name = "ruby"
+enabled = true
+
+  [analyzers.meta]
+  skip_doc_coverage = ["module", "singleton_method"]
