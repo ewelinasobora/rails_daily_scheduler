@@ -8,7 +8,7 @@ log_data = {}
 # Open the log file and iterate over each line
 File.foreach(log_file) do |line|
 	# Extract the date, status code, and message from the log line
-	date, status_code, message = line.split('|')
+	_date, status_code, message = line.split('|')
 	
 	# Check if the status code is already in the log data hash
 	if log_data[status_code]
