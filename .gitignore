@@ -38,3 +38,4 @@ yarn.lock
 /node_modules
 .idea
 coverage/
+.DS_Store
