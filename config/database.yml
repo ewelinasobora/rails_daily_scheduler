@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: rails_daily_scheduler_production
-  username: rails_daily_scheduler
+  database: rails-daily-scheduler
+  username: rails-daily-scheduler
   password: <%= ENV["RAILS_DAILY_SCHEDULER_DATABASE_PASSWORD"] %>

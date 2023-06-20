@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AddUserRefToEvents < ActiveRecord::Migration[7.0]
   def change
-    add_reference :events, :user, null: false, foreign_key: true
+    add_reference :events, :user, foreign_key: true
   end
 end

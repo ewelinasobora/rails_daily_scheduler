@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
-  
   def index
-    @events = Event.where(status: params[:status].presence || "incomplete")
+    @events = Event.where(status: params[:status].presence || 'incomplete')
   end
 
   def update
@@ -10,7 +11,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update(event_params)
         format.turbo_stream
-        format.html { redirect_to todo_url(@event), notice: "Event was successfully updated." }
+        format.html { redirect_to todo_url(@event), notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -21,9 +22,9 @@ class EventsController < ApplicationController
 
   def toggle
     @event = Event.find(params[:id])
-    @event.update(status: "complete")
+    @event.update(status: 'complete')
 
-    render json: { message: "Success" }
+    render json: { message: 'Success' }
   end
 
   private
