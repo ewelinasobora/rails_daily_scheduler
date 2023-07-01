@@ -25,16 +25,10 @@ class EventController < ApplicationController
     respond_to do |format|
       if @event.save
 
-        # Tell the UserMailer to send a welcome email after save
-        # NewEventNotification.with(event: @event).deliver(current_user)
-        # binding.b
-        # EventMailer.with(user: current_user).welcome_email.deliver_later
+        EventMailer.with(user: current_user).created_event_mail.deliver_later
 
-        # format.html { redirect_to(@event, notice: 'Event saved successfully') }
-        # render json: { action: 'inserted', tid: @event.id }
-        format.json { render json: @event, tid: @event.id, status: :ok }
+        format.json { render json: @event, tid: @event.id, action: 'inserted', status: :ok }
       else
-        # format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
