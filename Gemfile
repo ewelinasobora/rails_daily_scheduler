@@ -101,3 +101,4 @@ gem 'jwt'
 gem 'rack-cors'
 
 gem 'dotenv-rails'
+gem "brakeman"
