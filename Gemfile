@@ -3,25 +3,28 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.4'
+ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.4.1'
+gem 'rails', '7.0.6'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
+gem 'pg'
+# , '~> 1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '~> 5.0'
+gem 'puma'
+# , '~> 5.0'
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem 'jsbundling-rails'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem 'turbo-rails', '~> 1.0.0'
+gem 'turbo-rails'
+# , '~> 1.0.0'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails'
@@ -85,7 +88,8 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers', '~> 5.0'
+  gem 'shoulda-matchers'
+  # , '~> 5.0'
   gem 'simplecov', require: false
   gem 'webdrivers'
 end
