@@ -24,7 +24,7 @@
 
 
                 <div class="d-flex justify-content-center">
-                  <%= f.submit "Sign in" , class: "btn btn-success btn-block btn-lg gradient-custom-4 text-body" %>
+                  <%= f.submit "Sign in" , class: "btn btn-success btn-block btn-lg gradient-custom-4 text-body", data: {turbo: false} %>
                 </div>
                 <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="#!" class="fw-bold text-body"><u>
                   <%= render "devise/shared/links" %>

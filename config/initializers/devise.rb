@@ -1,5 +1,22 @@
 # frozen_string_literal: true
 
+# Turbo doesn't work with devise by default.
+# Keep tabs on https://github.com/heartcombo/devise/issues/5446 for a possible fix
+# Fix from https://gorails.com/episodes/devise-hotwire-turbo
+class TurboFailureApp < Devise::FailureApp
+  def respond
+    if request_format == :turbo_stream
+      redirect
+    else
+      super
+    end
+  end
+
+  def skip_format?
+    %w(html turbo_stream */*).include? request_format.to_s
+  end
+end
+
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
 # are not: uncommented lines are intended to protect your configuration from
@@ -10,6 +27,19 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   config.navigational_formats = ['*/*', :html, :turbo_stream]
+
+  config.parent_controller = 'TurboDeviseController'
+
+
+
+   # ==> Controller configuration
+  # Configure the parent class to the devise controllers.
+  # config.parent_controller = 'DeviseTurboController'
+
+  # ==> Warden configuration
+  # config.warden do |manager|
+  #   manager.failure_app = TurboFailureApp
+  # end
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -245,7 +275,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  # config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).

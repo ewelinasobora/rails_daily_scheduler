@@ -94,6 +94,8 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'hotwire-rails'
+
 # Devise extension which uses JWT tokens for user authentication.
 gem 'devise-jwt'
 gem 'jwt'
@@ -110,3 +112,5 @@ gem 'bundler-audit'
 # singular, status-checking endpoint to your application.
 # The endpoint provides a JSON response with either an HTTP 200 or an HTTP 500 response
 gem 'rapporteur'
+# aggregate custom metrics from multiple processes and export to Prometheus
+gem 'prometheus_exporter'
