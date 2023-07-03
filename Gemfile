@@ -94,11 +94,19 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'bundler-audit'
+# Devise extension which uses JWT tokens for user authentication.
 gem 'devise-jwt'
-gem 'jsonapi-serializer'
 gem 'jwt'
+# json api serializer
+gem 'jsonapi-serializer'
+# Rack CORS Middleware - support for Cross-Origin Resource Sharing (CORS)
 gem 'rack-cors'
-
+# rails autoload dotenv
 gem 'dotenv-rails'
+#static analysis for security vulnerabilities
 gem "brakeman"
+#batch level verification for bundler
+gem 'bundler-audit'
+# singular, status-checking endpoint to your application.
+# The endpoint provides a JSON response with either an HTTP 200 or an HTTP 500 response
+gem 'rapporteur'

@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  mount Rswag::Ui::Engine => '/api-docs'
-  mount Rswag::Api::Engine => '/api-docs'
+  # mount Rswag::Ui::Engine => '/api-docs'
+  # mount Rswag::Api::Engine => '/api-docs'
+
+  mount Rapporteur::Engine, at: '/status'
 
   devise_for :users
 
@@ -16,10 +18,10 @@ Rails.application.routes.draw do
   post 'events/:id/toggle', to: 'events#toggle'
 
   # api
-  namespace :api do
-    namespace :v1 do
-      resources :users, only: [:index]
-      resources :events, only: %i[index create]
-    end
-  end
+  # namespace :api do
+  #   namespace :v1 do
+  #     resources :users, only: [:index]
+  #     resources :events, only: %i[index create]
+  #   end
+  # end
 end
