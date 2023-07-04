@@ -34,7 +34,7 @@ Style/GlobalVars:
 Metrics/BlockLength:
   Exclude:
     - spec/**/**/**/*.rb
-    - config/environments/development.rb
+    - config/environments/*.rb
 Layout/LineLength:
   Exclude:
     - config/initializers/*.rb
