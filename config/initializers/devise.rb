@@ -13,7 +13,7 @@ class TurboFailureApp < Devise::FailureApp
   end
 
   def skip_format?
-    %w(html turbo_stream */*).include? request_format.to_s
+    %w[html turbo_stream */*].include? request_format.to_s
   end
 end
 
@@ -30,9 +30,7 @@ Devise.setup do |config|
 
   config.parent_controller = 'TurboDeviseController'
 
-
-
-   # ==> Controller configuration
+  # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseTurboController'
 

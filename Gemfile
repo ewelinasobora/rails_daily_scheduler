@@ -116,3 +116,6 @@ gem 'rapporteur'
 gem 'prometheus_exporter'
 # api client
 gem 'flexirest'
+
+gem 'sidekiq'
+gem 'sidekiq-scheduler'

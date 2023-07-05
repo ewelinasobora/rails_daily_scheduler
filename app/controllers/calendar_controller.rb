@@ -33,9 +33,9 @@ class CalendarController < ApplicationController
 
     case mode
     when 'inserted'
-      event = Event.create start_date: start_date, end_date: end_date,
-                           text: text, rec_type: rec_type,
-                           event_length: event_length, event_pid: event_pid
+      event = Event.create(start_date:, end_date:,
+                           text:, rec_type:,
+                           event_length:, event_pid:)
       tid = event.id
       mode = 'deleted' if rec_type == 'none'
 
@@ -65,7 +65,7 @@ class CalendarController < ApplicationController
     render json: {
       type: mode,
       sid: id,
-      tid: tid
+      tid:
     }
   end
   # rubocop:enable Style/CyclomaticComplexity

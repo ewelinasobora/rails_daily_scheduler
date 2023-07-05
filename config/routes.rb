@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   # mount Rswag::Ui::Engine => '/api-docs'
   # mount Rswag::Api::Engine => '/api-docs'
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   mount Rapporteur::Engine, at: '/status'
 
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
   delete 'data/:id', to: 'event#delete'
 
   resources :events
+  get 'published', to: 'events#published'
   post 'events/:id/toggle', to: 'events#toggle'
 
   # api
