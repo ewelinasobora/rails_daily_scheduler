@@ -3,6 +3,8 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
+  config.weatherapi_base_url = "http://api.weatherapi.com/v1/forecast.json?key=#{ENV.fetch('WEATHER_API_KEY')}"
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
@@ -77,4 +79,6 @@ Rails.application.configure do
     open_timeout: 5,
     read_timeout: 5
   }
+
+  config.active_job.queue_adapter = :sidekiq
 end

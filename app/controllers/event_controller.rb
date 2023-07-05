@@ -2,16 +2,16 @@
 
 class EventController < ApplicationController
   def get
-    events = Event.all
+    events = current_user.events.incomplete.enabled
 
-    render json: events.map { |event|
-                   {
-                     id: event.id,
-                     start_date: event.start_date.to_formatted_s(:db),
-                     end_date: event.end_date.to_formatted_s(:db),
-                     text: event.text
-                   }
-                 }
+    render json: events.map do |event|
+      {
+        id: event.id,
+        start_date: event.start_date.in_time_zone.to_formatted_s(:db),
+        end_date: event.end_date.in_time_zone.to_formatted_s(:db),
+        text: event.text
+      }
+    end
   end
 
   def add
@@ -24,14 +24,17 @@ class EventController < ApplicationController
 
     respond_to do |format|
       if @event.save
-
-        EventMailer.with(user: current_user).created_event_mail.deliver_later
-
         format.json { render json: @event, tid: @event.id, action: 'inserted', status: :ok }
       else
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def fetch_weatherapi
+    ForecastEvents::Create.call(location: params[:location], user: current_user)
+
+    render json: { action: 'weatherapi-fetched', status: :ok }
   end
 
   def update

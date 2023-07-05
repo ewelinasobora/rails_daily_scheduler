@@ -44,3 +44,4 @@ coverage/
 /config/credentials/development.key
 config/credentials.yml.enc
 .env
+config/secrets.yml

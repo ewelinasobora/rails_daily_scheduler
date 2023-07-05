@@ -3,6 +3,8 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
+  config.weatherapi_base_url = "http://api.weatherapi.com/v1/forecast.json?key=#{ENV.fetch('WEATHER_API_KEY')}"
+
   # Prepare the ingress controller used to receive mail
   # config.action_mailbox.ingress = :relay
 
@@ -105,10 +107,11 @@ Rails.application.configure do
     port: 587,
     domain: 'e-dot.uk',
     user_name: 'apikey',
-    password: ENV['MAIL_PASSWORD'],
+    password: ENV.fetch('MAIL_PASSWORD'),
     authentication: 'plain',
     enable_starttls_auto: true,
     open_timeout: 5,
     read_timeout: 5
   }
+  config.active_job.queue_adapter = :sidekiq
 end
