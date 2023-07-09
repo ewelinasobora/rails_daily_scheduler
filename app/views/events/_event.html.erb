@@ -8,6 +8,8 @@
 			                   },
 			                   class: "mr-2 align-middle bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-5 w-5 rounded checked:bg-green-500" %>
 			<%= event.text %>
+			</br>
+			<p style="color:#D1D0CE"><%= event.start_date.strftime("%d %B %Y") %></p>
 		<% end %>
 	</div>
 </li>

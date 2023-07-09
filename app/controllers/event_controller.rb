@@ -36,7 +36,7 @@ class EventController < ApplicationController
     ForecastResource.new.weekly.each do |date, rain|
       unless rain
         Event.create!(start_date: date.beginning_of_day, end_date: date.end_of_day, user: current_user,
-                    text: 'Water your outdoor plants!')
+                      text: 'Water your outdoor plants!')
       end
     end
 
