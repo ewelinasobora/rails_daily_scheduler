@@ -1,4 +1,16 @@
 <div class="container">
+</br>
+<div class="container">
+  <%= turbo_frame_tag "forecast_turbo_frame" do %>
+    <div class="header">
+      <%= link_to "Check forecast", calendar_fetch_weatherapi_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+</br>
+
+<%= link_to "Check forecast working", calendar_fetch_weatherapi_path, class: "btn btn-primary" %>
+
 <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:800px;'>
 	<div class="dhx_cal_navline">
 		<div class="dhx_cal_prev_button">&nbsp;</div>

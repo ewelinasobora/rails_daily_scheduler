@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class CalendarController < ApplicationController
-  def index; end
+  def index
+    @events = Event.where(user: current_user)
+  end
 
   def data
-    events = Event.all
+    events = Event.where(user: current_user)
 
     render json: events.map { |event|
                    {

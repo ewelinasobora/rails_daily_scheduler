@@ -14,7 +14,7 @@ module RailsDailyScheduler
     config.load_defaults 7.0
 
     Flexirest::Base.perform_caching = Rails.cache
-    config.external_api_base_url = "http://api.weatherapi.com/v1"
+    config.weatherapi_base_url = "http://api.weatherapi.com/v1"
 
     # Configuration for the application, engines, and railties goes here.
     #

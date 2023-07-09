@@ -2,7 +2,7 @@
 
 class EventController < ApplicationController
   def get
-    events = Event.all
+    events = Event.where(user_id: current_user.id)
 
     render json: events.map { |event|
                    {
@@ -30,6 +30,17 @@ class EventController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def fetch_weatherapi
+    ForecastResource.new.weekly.each do |date, rain|
+      unless rain
+        Event.create!(start_date: date.beginning_of_day, end_date: date.end_of_day, user: current_user,
+                    text: 'Water your outdoor plants!')
+      end
+    end
+
+    render json: { action: 'weatherapi-fetched', status: :ok }
   end
 
   def update
