@@ -1,6 +1,6 @@
-# :scheduler:
-#   schedule:
-#     create_event_if_rain:
-#       cron: "* 20 * * *"
-#       class: "WaterPlantEventWorker"
-#       queue: "default"
+:scheduler:
+  :schedule:
+    water_plant_event_worker:
+      cron: "30 10 * * *"
+      class: "WaterPlantEventWorker"
+      queue: "default"

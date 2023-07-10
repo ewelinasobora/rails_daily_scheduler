@@ -24,7 +24,6 @@ class EventController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        # EventMailer.with(user: current_user).created_event_mail.deliver_later
         format.json { render json: @event, tid: @event.id, action: 'inserted', status: :ok }
       else
         format.json { render json: @user.errors, status: :unprocessable_entity }

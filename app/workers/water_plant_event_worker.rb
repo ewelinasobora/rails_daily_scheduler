@@ -5,11 +5,10 @@ require 'sidekiq-scheduler'
 class WaterPlantEventWorker
   include Sidekiq::Worker
 
-  def perform
-    ForecastResource.new.weekly.each do |date, rain|
-      unless rain
-        Event.create!(start_date: date.beginning_of_day, end_date: date.end_of_day, user: User.first,
-                      text: 'Water your outdoor plants!')
+  def perform(*args)
+    User.find_each do |user|
+      if user.events.where(start_date: Time.zone.today, text: "Water your outdoor plants!")
+        EventMailer.with(user: user).water_plant_mail.deliver_later
       end
     end
   end

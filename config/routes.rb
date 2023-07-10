@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # mount Rswag::Ui::Engine => '/api-docs'
   # mount Rswag::Api::Engine => '/api-docs'
   require 'sidekiq/web'
+  require 'sidekiq-scheduler/web'
   mount Sidekiq::Web => '/sidekiq'
 
   mount Rapporteur::Engine, at: '/status'
