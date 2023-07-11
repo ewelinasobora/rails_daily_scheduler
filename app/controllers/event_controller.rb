@@ -32,8 +32,11 @@ class EventController < ApplicationController
   end
 
   def fetch_weatherapi
-    ForecastResource.new.weekly.each do |date, rain|
-      unless rain
+    ForecastResource.new(params[:location]).weekly.each do |date, rain|
+      if rain
+        events = Event.where(start_date: date.beginning_of_day, end_date: date.end_of_day, user: current_user, text: 'Water your outdoor plants!')
+        events.delete_all if events.present?
+      else
         Event.where(start_date: date.beginning_of_day, end_date: date.end_of_day, user: current_user,
                       text: 'Water your outdoor plants!').first_or_create
       end
