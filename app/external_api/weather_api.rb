@@ -6,7 +6,7 @@ class WeatherApi < Flexirest::Base
 
   base_url Rails.configuration.weatherapi_base_url
 
-  get :get, "/forecast.json?key=26488f822bd447dd852161451230307&q=:location&days=8"
+  get :get, '/forecast.json?key=26488f822bd447dd852161451230307&q=:location&days=8'
 
   after_request :cache_forecast
 

@@ -34,11 +34,11 @@ class EventController < ApplicationController
   def fetch_weatherapi
     ForecastResource.new(params[:location]).weekly.each do |date, rain|
       if rain
-        events = Event.where(start_date: date.beginning_of_day, end_date: date.end_of_day, user: current_user, text: 'Water your outdoor plants!')
+        events = Event.where(user: current_user, published: true)
         events.delete_all if events.present?
       else
         Event.where(start_date: date.beginning_of_day, end_date: date.end_of_day, user: current_user,
-                      text: 'Water your outdoor plants!').first_or_create
+                    text: 'Water your outdoor plants!', published: true, publish_at: Time.zone.now).first_or_create
       end
     end
 
