@@ -59,6 +59,7 @@ jobs:
         uses: idoberko2/dokku-deploy-github-action@v1
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # tailscale host
           dokku-host: '100.92.5.73'
           app-name: 'rails-daily-scheduler'
           remote-branch: main

@@ -1,6 +1,6 @@
 :scheduler:
   :schedule:
     water_plant_event_worker:
-      cron: "0 16 * * *"
-      class: "WaterPlantEventWorker"
+      cron: "* 8 * * *"
+      class: "CreateBatchWorker"
       queue: "default"

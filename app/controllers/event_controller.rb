@@ -2,16 +2,16 @@
 
 class EventController < ApplicationController
   def get
-    events = Event.where(user_id: current_user.id)
+    events = current_user.events.incomplete.enabled
 
-    render json: events.map { |event|
-                   {
-                     id: event.id,
-                     start_date: event.start_date.to_formatted_s(:db),
-                     end_date: event.end_date.to_formatted_s(:db),
-                     text: event.text
-                   }
-                 }
+    render json: events.map do |event|
+      {
+        id: event.id,
+        start_date: event.start_date.in_time_zone.to_formatted_s(:db),
+        end_date: event.end_date.in_time_zone.to_formatted_s(:db),
+        text: event.text
+      }
+    end
   end
 
   def add

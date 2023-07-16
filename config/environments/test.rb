@@ -8,6 +8,11 @@ require 'active_support/core_ext/integer/time'
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
+  routes.default_url_options[:host] = 'localhost:3000'
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  # fake api key
+  config.weatherapi_base_url = "http://api.weatherapi.com/v1/forecast.json?key=65488122b4447dd852161451230627"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Turn false under Spring and add config.action_view.cache_template_loading = true.
@@ -54,9 +59,10 @@ Rails.application.configure do
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
 
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
   # Annotate rendered view with file names.
-  # config.action_view.annotate_rendered_view_with_filenames = true
+  config.action_view.annotate_rendered_view_with_filenames = true
 end

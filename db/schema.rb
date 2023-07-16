@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_04_140454) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_13_132445) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_140454) do
     t.boolean "schedule", default: false
     t.boolean "published", default: false
     t.datetime "publish_at"
+    t.boolean "disable"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -43,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_140454) do
     t.datetime "confirmed_at", precision: nil
     t.datetime "confirmation_sent_at", precision: nil
     t.string "unconfirmed_email"
+    t.string "location"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

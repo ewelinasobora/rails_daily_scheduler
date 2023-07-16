@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   mount Rapporteur::Engine, at: '/status'
 
-  devise_for :users
+  # devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
 
   root to: 'calendar#index'
   get '/data/fetch_action', to: 'event#fetch_weatherapi', as: 'calendar_fetch_weatherapi'
@@ -20,19 +23,5 @@ Rails.application.routes.draw do
 
   resources :events
 
-  get 'published', to: 'events#published'
   post 'events/:id/toggle', to: 'events#toggle'
-
-  # api
-  # namespace :api do
-  #   namespace :v1 do
-  #     resources :users, only: [:index]
-  #     resources :events, only: %i[index create]
-  #   end
-  # end
 end
-
-# user registers with location
-# once user registers it queues the job to call the weaterapi and it creates week worth of events if rains/not rains
-# then everyday it creates or updates events for all locations for all users
-# notifications
