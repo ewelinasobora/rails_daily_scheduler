@@ -26,21 +26,13 @@ class EventController < ApplicationController
       if @event.save
         format.json { render json: @event, tid: @event.id, action: 'inserted', status: :ok }
       else
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def fetch_weatherapi
-    ForecastResource.new(params[:location]).weekly.each do |date, rain|
-      if rain
-        events = Event.where(user: current_user, published: true)
-        events.delete_all if events.present?
-      else
-        Event.where(start_date: date.beginning_of_day, end_date: date.end_of_day, user: current_user,
-                    text: 'Water your outdoor plants!', published: true, publish_at: Time.zone.now).first_or_create
-      end
-    end
+    ForecastEvents::Create.call(location: params[:location], user: current_user)
 
     render json: { action: 'weatherapi-fetched', status: :ok }
   end

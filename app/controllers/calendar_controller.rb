@@ -2,13 +2,11 @@
 
 class CalendarController < ApplicationController
   def index
-    @events = Event.where(user: current_user)
+    @events = current_user.events
   end
 
   def data
-    events = Event.where(user: current_user)
-
-    render json: events.map { |event|
+    render json: @events.map { |event|
                    {
                      id: event.id,
                      start_date: event.start_date.to_formatted_s(:db),
@@ -23,6 +21,9 @@ class CalendarController < ApplicationController
 
   # rubocop:disable Style/CyclomaticComplexity
   def db_action
+    events = Event.where(event_pid: id)
+    events.destroy_all if rec_type != ''
+
     mode = params['!nativeeditor_status']
     id = params['id']
     start_date = params['start_date']
@@ -35,26 +36,22 @@ class CalendarController < ApplicationController
 
     case mode
     when 'inserted'
-      event = Event.create(start_date:, end_date:,
-                           text:, rec_type:,
+      event = Event.create(start_date:, end_date:, text:, rec_type:,
                            event_length:, event_pid:)
       tid = event.id
       mode = 'deleted' if rec_type == 'none'
 
     when 'deleted'
-      Event.where(event_pid: id).destroy_all if rec_type != ''
-
       if event_pid != 0 && event_pid != ''
-        event = Event.find(id)
+        event = @event
         event.rec_type = 'none'
         event.save
       else
-        Event.find(id).destroy
+        @event.destroy
       end
 
     when 'updated'
-      Event.where(event_pid: id).destroy_all if rec_type != ''
-      event = Event.find(id)
+      event = @event
       event.start_date = start_date
       event.end_date = end_date
       event.text = text
@@ -71,4 +68,8 @@ class CalendarController < ApplicationController
     }
   end
   # rubocop:enable Style/CyclomaticComplexity
+
+  def event
+    @event =  Event.find(params["id"])
+  end
 end
