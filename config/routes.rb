@@ -31,3 +31,12 @@ Rails.application.routes.draw do
   #   end
   # end
 end
+
+# user registers with location
+# once user registers it queues the job to call the weaterapi and it creates week worth of events if rains/not rains
+# then everyday it creates or updates events for all locations for all users
+# notifications
+
+
+#
+

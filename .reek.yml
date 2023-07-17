@@ -1,0 +1,23 @@
+---
+### Ignored Directories
+detectors:
+  IrresponsibleModule:
+    enabled: false
+
+exclude_paths:
+  - db
+  - node_modules
+  - vendor
+  - bin
+  - log
+  - schema
+  - config
+
+directories:
+  "app/services/*.rb":
+    UtilityFunction:
+      enabled: false
+      ---
+detectors:
+  UtilityFunction:
+    public_methods_only: true

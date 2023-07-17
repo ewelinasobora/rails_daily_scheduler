@@ -2,11 +2,11 @@
 
 class EventsController < ApplicationController
   def index
-    @events = Event.where(status: params[:status].presence || 'incomplete')
+    @events = current_user.events.where(status: params[:status].presence || 'incomplete')
   end
 
   def update
-    @event = Event.find(params[:id])
+    @event = Event.find_by(user: current_user, id: params[:id])
 
     respond_to do |format|
       if @event.update(event_params)
@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   end
 
   def toggle
-    @event = Event.find(params[:id])
+    @event = Event.find_by(user: current_user, id: params[:id])
     @event.update(status: 'complete')
 
     render json: { message: 'Success' }
