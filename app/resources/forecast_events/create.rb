@@ -20,6 +20,3 @@ end
 # add search (elastic search)
 # prifile settings page
 # event settings page
-
-
-#

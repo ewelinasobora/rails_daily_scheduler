@@ -70,6 +70,6 @@ class CalendarController < ApplicationController
   # rubocop:enable Style/CyclomaticComplexity
 
   def event
-    @event =  Event.find(params["id"])
+    @event = Event.find(params['id'])
   end
 end
