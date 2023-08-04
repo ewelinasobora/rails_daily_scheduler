@@ -69,11 +69,12 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'rswag-specs'
-  gem 'rubocop'
+  gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
 end
 
 group :development do
+  gem "pre-commit", require: false
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 

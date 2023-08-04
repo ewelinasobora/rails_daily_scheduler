@@ -11,7 +11,7 @@ on:
   pull_request:
     branches: [ "main" ]
 jobs:
-  test:
+  tests:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -40,7 +40,7 @@ jobs:
       - name: Run tests
         run: bin/rake
 
-  lint:
+  security-checks:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
