@@ -8,7 +8,7 @@ class Event < ApplicationRecord
 
   belongs_to :user
 
-  scope :by_location, ->(location) { joins(:user).where(users: { location: }) }
+  scope :by_location, ->(location) { joins(:user).where(users: { location:}) }
   scope :enabled, -> { where(disable: false) }
   scope :disabled, -> { where(disable: true) }
   scope :incomplete, -> { where(status: 'incomplete') }

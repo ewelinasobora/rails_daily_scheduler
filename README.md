@@ -1,4 +1,4 @@
-# Event Scheduler
+# Event Scheduler ![Github Actions CI/CD](https://github.com/github/docs/actions/workflows/build_and_deploy.yml/badge.svg)
 
 The Event Scheduler Rails App is a powerful tool designed to simplify the process of creating events in your calendar while also taking into account the weather conditions for each day. This app combines the functionality of a calendar application with real-time weather data to help you plan your events effectively.
 Features
