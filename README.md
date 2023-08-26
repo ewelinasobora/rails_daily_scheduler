@@ -1,4 +1,4 @@
-# Event Scheduler ![Github Actions CI/CD](https://github.com/github/docs/actions/workflows/build_and_deploy.yml/badge.svg)
+# Event Scheduler
 
 The Event Scheduler Rails App is a powerful tool designed to simplify the process of creating events in your calendar while also taking into account the weather conditions for each day. This app combines the functionality of a calendar application with real-time weather data to help you plan your events effectively.
 Features
@@ -25,6 +25,18 @@ Follow these steps to get the Event Scheduler Rails App up and running:
 
     $ rails db:setup
 
-### Running app
+### Prerequisites
+
+Before you can run the Rails Scheduler App, please make sure you have the following:
+
+    1. SendGrid Account: You will need to have an account on SendGrid to enable email notifications for your scheduled tasks.
+
+    2. SendGrid API Key: Once you have a SendGrid account, generate an API Key with the necessary permissions to send emails. You'll need to set this API Key as an environment variable.
+
+    3. WeatherAPI Account: To provide weather updates for your scheduled activities, sign up for a WeatherAPI account and obtain an API key.
+
+The .env.sample contains empty environment variables for quick reference.. To ensure its proper functionality, refer to the instructions provided above.
+
+Run the app by typing:
 
     $ bin/dev

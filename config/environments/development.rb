@@ -71,9 +71,9 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.sendgrid.net',
     port: 587,
-    domain: 'e-dot.uk',
+    domain: ENV.fetch('MAIL_DOMAIN'),
     user_name: 'apikey',
-    password: Rails.application.credentials.email_password,
+    password: ENV.fetch('MAIL_PASSWORD'),
     authentication: 'plain',
     enable_starttls_auto: true,
     open_timeout: 5,

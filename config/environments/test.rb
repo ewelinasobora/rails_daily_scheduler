@@ -11,8 +11,8 @@ Rails.application.configure do
   routes.default_url_options[:host] = 'localhost:3000'
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
-  # fake api key
-  config.weatherapi_base_url = "http://api.weatherapi.com/v1/forecast.json?key=65488122b4447dd852161451230627"
+  # dummy api key
+  config.weatherapi_base_url = "http://api.weatherapi.com/v1/forecast.json?key=1aeb3dd84200309ca317c76b33634e56"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Turn false under Spring and add config.action_view.cache_template_loading = true.
